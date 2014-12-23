@@ -1,8 +1,6 @@
 #!/bin/bash
 
-BASENAME=$(basename $0)
-USAGE="Usage: $(basename $0) [-h]"
-DIRNAME=$(dirname $0)
+set -x
 
 while getopts "h" cliopts
 do
@@ -14,7 +12,9 @@ do
     esac
 done
 
-set -x
+BASENAME=$(basename $0)
+USAGE="Usage: $(basename $0) [-h]"
+DIRNAME=$(dirname $0)
 
 NAME=`/bin/grep Name build/*.spec | /bin/cut -d' ' -f2`;
 VERSION=`/bin/grep Version build/$NAME.spec | /bin/cut -d' ' -f2`;
@@ -39,7 +39,7 @@ mkdir -p $ROOT_DIR
 cp -a $DIRNAME/../* $ROOT_DIR
 
 cd $BUILD_DIR
-tar -c -v -z --exclude='.git' --exclude='config' --exclude='build' -f ${PACKAGE_NAME}.tar.gz $PACKAGE_NAME/
+tar -c -v -z --exclude='.git' --exclude='build' -f ${PACKAGE_NAME}.tar.gz $PACKAGE_NAME/
 cp ${PACKAGE_NAME}.tar.gz $SOURCE_DIR/
 
 rm -rf $BASE_DIR
