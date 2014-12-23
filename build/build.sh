@@ -14,14 +14,19 @@ done
 
 BASENAME=$(basename $0)
 USAGE="Usage: $(basename $0) [-h]"
-DIRNAME=$(dirname $0)
+_DIRNAME=$(dirname $0)
+if [ -d $_DIRNAME ]; then
+    cd $_DIRNAME
+    DIRNAME=$PWD
+    cd $OLDPWD
+fi
 
-NAME=`/bin/grep Name build/*.spec | /bin/cut -d' ' -f2`;
-VERSION=`/bin/grep Version build/$NAME.spec | /bin/cut -d' ' -f2`;
-RELEASE=`/bin/grep Release build/$NAME.spec | /bin/cut -d' ' -f2`;
+NAME=`/bin/grep Name $DIRNAME/*.spec | /bin/cut -d' ' -f2`;
+VERSION=`/bin/grep Version $DIRNAME/$NAME.spec | /bin/cut -d' ' -f2`;
+RELEASE=`/bin/grep Release $DIRNAME/$NAME.spec | /bin/cut -d' ' -f2`;
 if [ "$VERSION" = '' -o "$RELEASE" = '' ];
 then
-    echo "Cannot determine version or releasenumber."
+    echo "Cannot determine version or release number."
     exit 1
 fi
 
