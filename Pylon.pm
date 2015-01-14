@@ -107,6 +107,17 @@ sub graphs {
     return @graphs;
 }
 
+sub shortgraphs {
+    my $self = shift || return;
+    my @servers = @_;
+    return () unless (scalar(@servers));
+
+    my $command = "shortgraphs|" . join('|', @servers);
+    my $list = $self->command($command);
+    my @graphs = split(/\|/, $list);
+    return @graphs;
+}
+
 sub options {
     my $self = shift || return;
     my $options;

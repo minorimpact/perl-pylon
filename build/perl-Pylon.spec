@@ -1,6 +1,6 @@
 Summary: perl-Pylon.
 Name: perl-Pylon
-Version: 0.0.2
+Version: 0.0.3
 Release: 1
 Epoch: 0
 License: GPL
@@ -37,6 +37,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # Changelog - update this with every build of the package
 %changelog
+* Wed Jan 14 2015 <pgilan@minorimpact.com> 0.0.3-1
+- Added the shortgraphs function.
 * Fri Dec 22 2014 <pgilan@minorimpact.com> 0.0.2-1
 - More functions.
 * Fri Dec 19 2014 <pgilan@minorimpact.com> 0.0.1-1
