@@ -1,11 +1,11 @@
-Summary: perl-Pylon.
+Summary: A Perl interface for the Pylon graphing server.
 Name: perl-Pylon
-Version: 0.0.3
+Version: 0.0.4
 Release: 1
 Epoch: 0
 License: GPL
 URL: http://www.minorimpact.com/pylon
-Group: Applications/System
+Group: Development/Libraries
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
@@ -15,7 +15,8 @@ BuildArch: noarch
 Provides: perl(Pylon)
 
 %description
-perl-Pylon.
+perl-Pylon provides a Perl object for interacting with 
+the Pylon graphing server.
 
 %prep
 %setup
@@ -37,6 +38,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # Changelog - update this with every build of the package
 %changelog
+* Wed Jan 15 2015 <pgilan@minorimpact.com> 0.0.4-1
+- Added a better description for the package.
 * Wed Jan 14 2015 <pgilan@minorimpact.com> 0.0.3-1
 - Added the shortgraphs function.
 * Fri Dec 22 2014 <pgilan@minorimpact.com> 0.0.2-1
