@@ -12,6 +12,8 @@ do
     esac
 done
 
+LIVE_DIR="/usr/share/perl5/vendor_perl";
+RELEASE_DIR="/usr/local/www/minorimpact.com/html/pylon/download";
 BASENAME=$(basename $0)
 USAGE="Usage: $(basename $0) [-h]"
 _DIRNAME=$(dirname $0)
@@ -31,7 +33,6 @@ then
 fi
 
 PACKAGE_NAME="$NAME-$VERSION"
-LIVE_DIR="/usr/share/perl5/vendor_perl";
 BUILD_DIR="/tmp"
 BASE_DIR="$BUILD_DIR/$PACKAGE_NAME"
 ROOT_DIR="$BASE_DIR/$LIVE_DIR"
@@ -52,7 +53,6 @@ rpmbuild -ba $DIRNAME/$NAME.spec
 
 cd $HOME
 RPM="$PACKAGE_NAME-$RELEASE.noarch.rpm"
-RELEASE_DIR="/usr/local/www/minorimpact.com/html/pylon";
 cp RPMS/noarch/$RPM $RELEASE_DIR/
 rm -f $RELEASE_DIR/$NAME-latest.noarch.rpm
 ln -s $RELEASE_DIR/$RPM $RELEASE_DIR/$NAME-latest.noarch.rpm
