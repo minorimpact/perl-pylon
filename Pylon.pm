@@ -146,9 +146,13 @@ sub array_average {
     @_ == 1 or die ('Sub usage: $average = average(\@array);');
     my ($array_ref) = @_;
     my $sum;
-    my $count = scalar @$array_ref;
-    foreach (@$array_ref) { $sum += $_; }
-    return undef if ($sum == undef);
+    my $count = 0;
+    foreach (@$array_ref) { 
+        next if ($_ eq 'inf');
+        $sum += $_; 
+        $count++;
+    }
+    return undef if ($sum == undef || $count == 0);
     return $sum / $count;
 }
 
@@ -171,14 +175,18 @@ sub ensmoothen_graph_data {
     my $time_mark = $start_time + $interval;
     foreach my $time (sort keys %{$graph_data}) {
         if ($time > $time_mark) {
-            #print "$time_mark<br />\n";
             foreach my $sub_id (keys %avg) {
                 $smooth_data->{$time_mark}{$sub_id} = array_average($avg{$sub_id});
             }
             %avg = ();
             $time_mark += $interval;
+            if ($time_mark < $time) {
+                $time_mark = $time + $interval
+            }
+
         }
         foreach my $sub_id (sort keys %{$graph_data->{$time}}) {
+            next if ($graph_data->{$time}{$sub_id} eq 'inf');
             push(@{$avg{$sub_id}}, $graph_data->{$time}{$sub_id});
             $subs{$sub_id}++;
         }
