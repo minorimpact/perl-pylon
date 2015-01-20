@@ -1,7 +1,7 @@
 Summary: A Perl interface for the Pylon graphing server.
 Name: perl-Pylon
 Version: 0.0.5
-Release: 1
+Release: 2
 Epoch: 0
 License: GPL
 URL: http://www.minorimpact.com/pylon
@@ -38,6 +38,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # Changelog - update this with every build of the package
 %changelog
+* Tue Jan 20 2015 <pgilan@minorimpact.com> 0.0.5-2
+- Minor change to build script to install the .pm file in 2 place.
 * Tue Jan 20 2015 <pgilan@minorimpact.com> 0.0.5-1
 - Updated the data smoothing mechanism.
 * Wed Jan 15 2015 <pgilan@minorimpact.com> 0.0.4-1

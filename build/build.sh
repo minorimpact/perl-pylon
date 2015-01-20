@@ -13,6 +13,7 @@ do
 done
 
 LIVE_DIR="/usr/share/perl5/vendor_perl";
+LIVE2_DIR="/usr/lib/perl5/vendor_perl";
 RELEASE_DIR="/usr/local/www/minorimpact.com/html/pylon/download";
 BASENAME=$(basename $0)
 USAGE="Usage: $(basename $0) [-h]"
@@ -36,13 +37,17 @@ PACKAGE_NAME="$NAME-$VERSION"
 BUILD_DIR="/tmp"
 BASE_DIR="$BUILD_DIR/$PACKAGE_NAME"
 ROOT_DIR="$BASE_DIR/$LIVE_DIR"
+ROOT2_DIR="$BASE_DIR/$LIVE2_DIR"
 SOURCE_DIR="$HOME/SOURCES"
 
 [ -f $SOURCE_DIR/$PACKAGE_NAME.tar.gz ] && rm -f $SOURCE_DIR/$PACKAGE_NAME.tar.gz
 [ -d $ROOT_DIR ] && rm -rf $ROOT_DIR
+[ -d $ROOT2_DIR ] && rm -rf $ROOT2_DIR
 mkdir -p $ROOT_DIR
+mkdir -p $ROOT2_DIR
 
 cp -a $DIRNAME/../* $ROOT_DIR
+cp -a $DIRNAME/../* $ROOT2_DIR
 
 cd $BUILD_DIR
 tar -c -v -z --exclude='.git' --exclude='build' -f ${PACKAGE_NAME}.tar.gz $PACKAGE_NAME/
