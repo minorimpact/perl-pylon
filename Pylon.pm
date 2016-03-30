@@ -214,8 +214,9 @@ sub add {
     my $value = shift || 0;
     my $type = shift;
 
-    my $add_string = "add|$graph_id|$server|$value";
-    $add_string .= "|counter" if ($type);
+    $type = "gauge" unless ($type eq "counter");
+    my $add_string = "add|$graph_id|$server|$value|$type";
+
     return $self->command($add_string);
 }
 
