@@ -214,7 +214,7 @@ sub add {
     my $value = shift || 0;
     my $type = shift;
 
-    # Hard to make sure that no value that isn't supported by the server accidentally gets through.
+    # Make sure that no type value that isn't supported by the server accidentally gets through.
     $type = "gauge" unless ($type eq "counter");
     my $add_string = "add|$graph_id|$server|$value|$type";
 

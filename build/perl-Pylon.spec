@@ -38,6 +38,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # Changelog - update this with every build of the package
 %changelog
+* Tue Mar 29 2016 <pgilan@minorimpact.com> 0.0.6-1
+- Updated build scripts, fixed issue with counter type.
 * Tue Apr 28 2015 <pgilan@minorimpact.com> 0.0.6-1
 - Changed the add() function so it matched the code.
 * Tue Jan 20 2015 <pgilan@minorimpact.com> 0.0.5-2
